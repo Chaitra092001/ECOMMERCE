@@ -1,0 +1,988 @@
+SELECT * FROM TBL_LOGIN
+select * from Tbl_Customer
+select * from Tbl_Category
+SELECT * FROM Tbl_SubCategory
+select * from Tbl_Products
+select * from Tbl_Orders
+select * from Tbl_Reviews
+select * from Tbl_Payments
+select * from Tbl_Cart
+SELECT * FROM tbl_likeditem
+SELECT * FROM tbl_delivery_status
+SELECT * FROM tbl_discounts
+SELECT * FROM TBL_DELIVERY_STAFF
+
+select * from tbl_CustomerAuditDetails
+select * from tbl_ProductAuditDetails
+select * from tbl_AUDITCHANGES
+
+update TBL_LOGIN
+set PASSWORD = HASHBYTES('MD5','PSSWRD20')
+WHERE LOGIN_ID = 20
+
+
+--CREATE TABLES
+
+CREATE TABLE Tbl_Customer( CUSTOMER_ID varchar(10) primary key NOT NULL,
+CUSTOMER_NAME varchar(100) NOT NULL,
+EMAIL VARCHAR(50) NOT NULL,
+PHONE_NUMBER char(10) check ( 6000000000 <= PHONE_NUMBER and PHONE_NUMBER <= 9999999999) NOT NULL,
+GENDER char(1) NOT NULL,
+STREET VARCHAR(50) NOT NULL,
+CITY VARCHAR(20) NOT NULL,
+PIN NUMERIC(6) NOT NULL,
+STATE VARCHAR(20) NOT NULL,
+COUNTRY VARCHAR(20) NOT NULL
+)
+
+ALTER TABLE TBL_CUSTOMER
+ADD CONSTRAINT email_constarint
+CHECK (EMAIL LIKE '%@%.com' )
+
+INSERT INTO TBL_CUSTOMER VALUES ('USER_01' , 'CHAITRA PRABHU', 'chaitra@gmail.com', 9876543210,'F', 'MANNAGUDDA', 'MANGALORE',575003, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_02', 'SHRAVANI', 'shravs@gmail.com', 6854279293, 'F','BEJAI', 'MANGALORE',575008, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_03', 'NAGESH','nagesh@yahoo.com',7901583729,'M', 'MK GANDHI', 'KOCHI', 345332,'KERALA','INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_04','NAYANA', 'nayana@gmail.com', 8907654321, 'F', 'INDIRANAGAR', 'BANGALORE', 678543, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_05', 'KAVYA', 'kvya@gmail.com',8907654321, 'F', 'INDIRANAGAR', 'BANGALORE', 678543, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_06','VARSHIN', 'varshini@gmail.com', 9876543210,'F', 'MANNAGUDDA', 'MANGALORE',575003, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_07', 'SANMITH','samith@gmail.com', 6854279293, 'F','BEJAI', 'MANGALORE',575008, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_08', 'SWAMY','swamy@gmail.com',7901583729,'M', 'MK GANDHI', 'KOCHI', 345332,'KERALA','INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_09', 'AMRUTH','amruth@gmail.com',8907654321, 'M', 'INDIRANAGAR', 'BANGALORE', 678543, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_10', 'SWATHI','swathi@gmail.com', 9876543210,'F', 'MANNAGUDDA', 'MANGALORE',575003, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_11', 'AKARSH','akarsh@gmail.com',8907654321, 'M', 'INDIRANAGAR', 'BANGALORE', 678543, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_12', 'KAILASH','kailash@gmail.com', 6854279293, 'M','BEJAI', 'MANGALORE',575008, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_13',' VARUN', 'varun@gmail.com',7901583729,'M', 'MK GANDHI', 'KOCHI', 345332,'KERALA','INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_14', 'MANASA','manasa@gmail.com', 6854279293, 'F','BEJAI', 'MANGALORE',575008, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_15','THRISHALA','thrishala@gmail.com',8907654321, 'F', 'INDIRANAGAR', 'BANGALORE', 678543, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_16',' RACHANA','rachana@gmail.com',7901583729,'M', 'MK GANDHI', 'KOCHI', 345332,'KERALA','INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_17', 'PRIYA','priya@gmail.com', 9876543210,'F', 'MANNAGUDDA', 'MANGALORE',575003, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_18', 'SAMEEKSHA','sam@gmail.com', 6854279293, 'F','BEJAI', 'MANGALORE',575008, 'KARNATAKA', 'INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_19', 'GAYATHRI','gayathri@gmail.com',7901583729,'F', 'MK GANDHI', 'KOCHI', 345332,'KERALA','INDIA')
+INSERT INTO TBL_CUSTOMER VALUES ('USER_20', 'AISHWARTA','aishu@gmail.com', 6854279293, 'F','BEJAI', 'MANGALORE',575008, 'KARNATAKA', 'INDIA')
+
+
+CREATE TABLE Tbl_Category (
+CATEGORY_ID VARCHAR(10) PRIMARY KEY NOT NULL,
+CATEGORY_NAME VARCHAR(30) NOT NULL,
+CATEGORY_DESCRIPTION varchar(max)
+)
+
+INSERT INTO Tbl_Category VALUES  ('CT01', 'WOMEN CLOTHINGS', ' TOPWEAR, BOTTOMWEAR, SLEEPWEAR, PLUS SIZE')
+INSERT INTO Tbl_Category VALUES  ('CT02', 'MEN CLOTHINGS', ' TOPWEAR, BOTTOMWEAR, SLEEPWEAR, PLUS SIZE')
+INSERT INTO Tbl_Category VALUES ('CT03', 'KIDS', ' BOYS AND GIRLS 2+ YEARS, INFANT 0-2 YEARS, BABY CARE')
+INSERT INTO Tbl_Category VALUES ('CT04', 'HOME AND KITCHEN', ' HOME DECOR, KITCHEN AND APPLIANCES, HOME TEXTILES')
+INSERT INTO Tbl_Category VALUES ('CT05', 'BEAUTY AND HEALTH', ' MAKEUP, PERSONAL CARE, HELTHCARE')
+INSERT INTO Tbl_Category VALUES ('CT06', 'JEWELLERY AND ACCESSORIES', ' JEWELLERY, MEN ACCESSORIES, WOMEN ACCESSORIES')
+INSERT INTO Tbl_Category VALUES ('CT07', 'BAGS AND FOOTWEARS', ' WOMEN BAGS, MEN BAGS, TRAVEL BAGS, LUGGAGES')
+INSERT INTO Tbl_Category VALUES ('CT08', 'ELECTRONICS', ' AUDIO, SMAT WEARABLES, ACCESSORIES')
+INSERT INTO Tbl_Category VALUES ('CT09', 'SPORTS AND FITNESS', ' SPORTS , FITNESS')
+INSERT INTO Tbl_Category VALUES ('CT10', 'OFFICE SUPPLIES AND STATIONARY', ' OFFICE SUPPLIES, STATIONARY')
+INSERT INTO Tbl_Category VALUES ('CT11', 'FOOD AND DRINKS', 'FOOD, DRINKS')
+INSERT INTO Tbl_Category VALUES ('CT12', 'BOOKS', ' FICTION AND NON FICTION BOOKS, ACADEMIC BOOKS')
+INSERT INTO Tbl_Category VALUES ('CT13', 'PET SUPPLIES', ' PET SUPPLIES')
+INSERT INTO Tbl_Category VALUES ('CT14', 'MUSICAL INSTRUMENTS', ' DIFFERENT MUSICAL INSTRUMENTS')
+
+
+CREATE TABLE Tbl_Products
+(
+PRODUCT_ID VARCHAR(10) PRIMARY KEY NOT NULL,
+PRODUCT_NAME VARCHAR(50) NOT NULL,
+PRODUCT_DESCRIPTION varchar(100) ,
+PRODUCT_UNIT_AMOUNT FLOAT NOT NULL ,
+CATEGORY_ID VARCHAR(10) FOREIGN KEY REFERENCES Tbl_Category(CATEGORY_ID) NOT NULL
+)
+
+INSERT INTO Tbl_Products VALUES ('PRODUCT_02','HNM T-SHIRT', 'WESTERN WOMEN T-SHIRT', 549, 'CT01')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_03','HNM BLACK GOWN', 'WOMEN GOWNS', 799, 'CT01')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_04','ZARA SAREE', 'FANCY SAREES FOR WOMEN', 2499, 'CT01')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_05','HNM T-SHIRT', 'MENS T-SHIRT', 500, 'CT02')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_06','HNM JEANS', 'MEN JEANS',999, 'CT02')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_07','HNM T-SHIRT', 'WESTERN WOMEN T-SHIRT', 549, 'CT01')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_08','ZARA BLACK GOWN', 'WOMEN GOWNS', 799, 'CT01')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_09','HNM SAREE', 'FANCY SAREES FOR WOMEN', 2499, 'CT01')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_10','ZARA T-SHIRT', 'MENS T-SHIRT', 500, 'CT02')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_11','ZARA JEANS', 'MEN JEANS',999, 'CT02')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_12','ZARA SHIRTS', 'MEN SHIRTS', 799, 'CT02')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_13','ZARA GIRL SET', 'CLOTHES FOR GIRLS OF +2 AGE', 629, 'CT03')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_14','ZARA BOY SET', 'CLOTHES FOR BOYS OF +2 AGE', 629, 'CT03')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_15','HNM BABY SET', 'CLOTHES FOR BABIES ', 629, 'CT03')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_16','LAKME LIPSTICK', 'WOMEN LIPSTICKS', 499, 'CT05')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_17','LAKME FACE MAKEUP', 'WOMEN MAKEUP PRODUCT', 500, 'CT05')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_18','MAYBELLENE LIPSTICK', 'WOMEN LIPSTICKS', 499, 'CT05')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_19','MAYBELLENE FACE MAKEUP', 'WOMEN MAKEUP PRODUCT', 500, 'CT05')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_20','KEYMAX JEWELLERY SET', ' WOMEN JEWELLERY SET', 899, 'CT06')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_21','KEYMAX NECKLACE', ' WOMEN NECKLACES', 499, 'CT06')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_22','KEYMAX EARRINGS', ' WOMEN EARRINGS', 500, 'CT06')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_23','KEYMAX BANGLES', ' WOMEN BANGLES', 500, 'CT06')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_24','KABIRA JEWELLERY SET', ' WOMEN JEWELLERY SET', 899, 'CT06')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_25','KABIRA NECKLACE', ' WOMEN NECKLACES', 499, 'CT06')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_26','KABIRA EARRINGS', ' WOMEN EARRINGS', 500, 'CT06')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_27','GUCCI HANDBAGS', 'WOMEN BAGS',750, 'CT07')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_28','GUCCI BACKPACKS', 'WOMEN BAGPACKS', 629, 'CT07')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_29','GUCCI BACKPACKS', 'MEN BAGPACKS', 629, 'CT07')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_30','ACEWOOD BACKPACKS', 'WOMEN BAGPACKS', 629, 'CT07')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_31','ACEWOOD BACKPACKS', 'MEN BAGPACKS', 629, 'CT07')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_32',' BOATSMART WATCHES', 'COOL SMART WATCHES', 2399, 'CT08')
+INSERT INTO Tbl_Products VALUES ('PRODUCT_33',' BOAT WIRED HEDPHONES', 'WIRED HEDPHONES', 1750, 'CT08')
+
+ALTER TABLE TBL_PRODUCTS
+ADD QUANTITY_AVAILABLE INT 
+
+
+CREATE TABLE Tbl_Orders(
+ORDER_ID VARCHAR(10) PRIMARY KEY NOT NULL,
+CUSTOMER_ID varchar(10) FOREIGN KEY REFERENCES Tbl_Customer(CUSTOMER_ID) NOT NULL,
+PRODUCT_ID  VARCHAR(10) FOREIGN KEY REFERENCES Tbl_Products(PRODUCT_ID) NOT NULL, 
+ORDER_DATE DATE NOT NULL,
+ORDER_QUANTITY INT NOT NULL,
+UNIT_AMOUNT int NOT NULL)
+
+insert into Tbl_Orders values ('order_01', 'user_07', 'product_09','2023-02-21', 4,
+(select PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id='product_09'))
+
+insert into Tbl_Orders values ('order_02', 'user_11', 'product_03','2022-01-23', 3, 
+(select PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id='product_03'))
+insert into Tbl_Orders values ('order_03', 'user_14', 'product_26','2020-11-09', 4, 
+(select PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id='product_26'))
+insert into Tbl_Orders values ('order_04', 'user_19', 'product_11','2023-10-21', 2,
+(select PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id='product_11'))
+insert into Tbl_Orders values ('order_05', 'user_06', 'product_25','2022-07-10', 1, 
+(select PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id='product_25'))
+insert into Tbl_Orders values ('order_09', 'user_04', 'product_17','2021-12-30', 2, 
+(select PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id='product_17'))
+insert into Tbl_Orders values ('order_06', 'user_08', 'product_10','2021-10-21', 2,
+(select PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id='product_10'))
+insert into Tbl_Orders values ('order_07', 'user_12', 'product_04','2022-01-23', 3, 
+(select PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id='product_04'))
+insert into Tbl_Orders values ('order_08', 'user_15', 'product_27','2020-11-09', 1, 
+(select PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id='product_27'))
+insert into Tbl_Orders values ('order_10', 'user_20', 'product_18','2023-10-21', 2,
+(select PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id='product_18'))
+insert into Tbl_Orders values ('order_11', 'user_07', 'product_26','2022-07-10', 2, 
+(select PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id='product_26'))
+insert into Tbl_Orders values ('order_12', 'user_04', 'product_18','2021-12-30', 2, 
+(select PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id='product_18'))
+
+
+
+CREATE TABLE Tbl_Payments(
+PAYMENT_ID VARCHAR(10) PRIMARY KEY NOT NULL,
+ORDER_ID varchar(10) FOREIGN KEY REFERENCES Tbl_ORDERS(ORDER_ID) NOT NULL,
+DATE_OF_PAYMENT DATE NOT NULL,
+ACCOUNT_NUMBER VARCHAR(20) NOT NULL,
+EXPIRY_DATE  DATE NOT NULL,
+TOTAL_AMOUNT FLOAT NOT NULL)
+
+INSERT INTO Tbl_Payments VALUES ('PAYMENT_02', 'ORDER_01', '2022-01-23', 'A00025671', '2024-12-20', 
+(select UNIT_AMOUNT*ORDER_QUANTITY from Tbl_Orders where PRODUCT_ID='PRODUCT_03') )
+
+INSERT INTO Tbl_Payments VALUES ('PAYMENT_01', 'ORDER_02', '2023-02-17', 'A00025664', '2025-06-20', 
+(select UNIT_AMOUNT*ORDER_QUANTITY from Tbl_Orders where PRODUCT_ID='PRODUCT_03') )
+
+INSERT INTO Tbl_Payments VALUES ('PAYMENT_03', 'ORDER_03', '2022-01-23', 'A00025643', '2024-12-20', 
+(select UNIT_AMOUNT*ORDER_QUANTITY from Tbl_Orders where PRODUCT_ID='PRODUCT_27') )
+INSERT INTO Tbl_Payments VALUES ('PAYMENT_04', 'ORDER_04', '2022-01-10', 'A00044571', '2024-12-26', 
+(select UNIT_AMOUNT*ORDER_QUANTITY from Tbl_Orders where PRODUCT_ID='PRODUCT_11') )
+INSERT INTO Tbl_Payments VALUES ('PAYMENT_05', 'ORDER_05', '2022-10-14', 'A00025654', '2023-11-10', 
+(select UNIT_AMOUNT*ORDER_QUANTITY from Tbl_Orders where PRODUCT_ID='PRODUCT_25') )
+INSERT INTO Tbl_Payments VALUES ('PAYMENT_06', 'ORDER_06', '2022-01-25', 'A00025546', '2024-12-20', 
+(select UNIT_AMOUNT*ORDER_QUANTITY from Tbl_Orders where PRODUCT_ID='PRODUCT_27') )
+INSERT INTO Tbl_Payments VALUES ('PAYMENT_07', 'ORDER_07', '2022-08-31', 'A00025753', '2024-12-09', 
+(select UNIT_AMOUNT*ORDER_QUANTITY from Tbl_Orders where PRODUCT_ID='PRODUCT_03') )
+INSERT INTO Tbl_Payments VALUES ('PAYMENT_08', 'ORDER_08', '2022-05-10', 'A000256775', '2024-05-22', 
+(select UNIT_AMOUNT*ORDER_QUANTITY from Tbl_Orders where PRODUCT_ID='PRODUCT_04') )
+INSERT INTO Tbl_Payments VALUES ('PAYMENT_09', 'ORDER_09', '2022-11-08', 'A00025467', '2024-03-10', 
+(select UNIT_AMOUNT*ORDER_QUANTITY from Tbl_Orders where PRODUCT_ID='PRODUCT_27') )
+INSERT INTO Tbl_Payments VALUES ('PAYMENT_10', 'ORDER_10', '2022-12-02', 'A000254667', '2024-07-10', 
+(select UNIT_AMOUNT*ORDER_QUANTITY from Tbl_Orders where PRODUCT_ID='PRODUCT_27') )
+INSERT INTO Tbl_Payments VALUES ('PAYMENT_11', 'ORDER_11', '2022-03-23', 'A00025543', '2024-12-20', 
+(select UNIT_AMOUNT*ORDER_QUANTITY from Tbl_Orders where PRODUCT_ID='PRODUCT_27') )
+INSERT INTO Tbl_Payments VALUES ('PAYMENT_12', 'ORDER_12', '2022-01-13', 'A00025445', '2024-11-20', 
+(select UNIT_AMOUNT*ORDER_QUANTITY from Tbl_Orders where PRODUCT_ID='PRODUCT_03') )
+
+
+
+CREATE TABLE Tbl_Cart(
+CART_ID VARCHAR(10) PRIMARY KEY NOT NULL,
+CUSTOMER_ID varchar(10) FOREIGN KEY REFERENCES Tbl_Customer(CUSTOMER_ID) NOT NULL,
+PRODUCT_ID  VARCHAR(10) FOREIGN KEY REFERENCES Tbl_Products(PRODUCT_ID) NOT NULL,
+DATE DATE NOT NULL,
+QUANTITY_OF_PRODUCT INT NOT NULL)
+
+
+INSERT INTO Tbl_Cart VALUES('CART_01' ,'USER_14', 'PRODUCT_09','2022-09-06',2)
+INSERT INTO Tbl_Cart VALUES('CART_02' ,'USER_04', 'PRODUCT_30','2021-09-06',1)
+INSERT INTO Tbl_Cart VALUES('CART_03' ,'USER_09', 'PRODUCT_33','2023-01-10',3)
+INSERT INTO Tbl_Cart VALUES('CART_04' ,'USER_12', 'PRODUCT_12','2022-04-19',2)
+INSERT INTO Tbl_Cart VALUES('CART_05' ,'USER_10', 'PRODUCT_12','2022-10-21',4)
+INSERT INTO Tbl_Cart VALUES('CART_06' ,'USER_18', 'PRODUCT_29','2022-06-30',1)
+INSERT INTO Tbl_Cart VALUES('CART_07' ,'USER_16', 'PRODUCT_25','2022-03-22',2)
+INSERT INTO Tbl_Cart VALUES('CART_08' ,'USER_04', 'PRODUCT_17','2022-04-25',1)
+INSERT INTO Tbl_Cart VALUES('CART_09' ,'USER_12', 'PRODUCT_20','2021-11-03',2)
+INSERT INTO Tbl_Cart VALUES('CART_10' , 'USER_19', 'PRODUCT_11','2022-09-20',4)
+INSERT INTO Tbl_Cart VALUES('CART_11' , 'USER_01', 'PRODUCT_03','2020-05-030',4)
+INSERT INTO Tbl_Cart VALUES('CART_12' ,'USER_04', 'PRODUCT_16','2022-04-16',2)
+INSERT INTO Tbl_Cart VALUES('CART_13' , 'USER_13', 'PRODUCT_09','2021-12-14',1)
+INSERT INTO Tbl_Cart VALUES('CART_14' ,'USER_02', 'PRODUCT_12','2022-05-11',3)
+INSERT INTO Tbl_Cart VALUES('CART_15' ,'USER_10', 'PRODUCT_12','2021-12-29',2)
+INSERT INTO Tbl_Cart VALUES('CART_16' ,'USER_18', 'PRODUCT_09', '2022-09-29',2)
+INSERT INTO Tbl_Cart VALUES('CART_17' ,'USER_06', 'PRODUCT_25','2022-07-25',2)
+INSERT INTO Tbl_Cart VALUES('CART_18' ,'USER_04', 'PRODUCT_07','2023-04-25',1)
+INSERT INTO Tbl_Cart VALUES('CART_19' ,'USER_12', 'PRODUCT_20','2021-06-09',1)
+INSERT INTO Tbl_Cart VALUES('CART_20' ,'USER_04', 'PRODUCT_09','2022-07-01',3)
+
+
+CREATE TABLE Tbl_Reviews
+(
+REVIEW_ID VARCHAR(10) PRIMARY KEY NOT NULL,
+CUSTOMER_ID varchar(10) FOREIGN KEY REFERENCES Tbl_Customer(CUSTOMER_ID) NOT NULL,
+PRODUCT_ID  VARCHAR(10) FOREIGN KEY REFERENCES Tbl_Products(PRODUCT_ID) NOT NULL,
+REVIEWS varchar(50),
+RATINGS CHAR(1) CHECK (0< RATINGS AND RATINGS <=5))
+
+INSERT INTO Tbl_Reviews VALUES ('REVIEW_01', 'USER_07','PRODUCT_09', 'NOT GOOD', 2)
+INSERT INTO Tbl_Reviews VALUES ('REVIEW_02', 'user_11', 'product_03', ' GOOD', 3)
+INSERT INTO Tbl_Reviews VALUES ('REVIEW_03', 'user_14', 'product_26', 'WORST PRODUCT', 1)
+INSERT INTO Tbl_Reviews VALUES ('REVIEW_04', 'user_19', 'product_11', 'AMAZING', 5)
+INSERT INTO Tbl_Reviews VALUES ('REVIEW_05', 'user_06', 'product_25', ' GOOD ONE', 4)
+INSERT INTO Tbl_Reviews VALUES ('REVIEW_06',  'user_04', 'product_17', 'NOT A GOOD ONE', 2)
+INSERT INTO Tbl_Reviews VALUES ('REVIEW_07', 'user_08', 'product_10', 'SATISFIED', 3)
+INSERT INTO Tbl_Reviews VALUES ('REVIEW_08', 'user_15', 'product_27', 'NOT GOOD', 2)
+INSERT INTO Tbl_Reviews VALUES ('REVIEW_09', 'user_20', 'product_18', 'VERY GOOD', 4)
+INSERT INTO Tbl_Reviews VALUES ('REVIEW_10', 'user_07', 'product_26', 'MUST PURCHASE', 5)
+INSERT INTO Tbl_Reviews VALUES ('REVIEW_11', 'user_04', 'product_18', 'AVERAGE', 2)
+
+
+create table tbl_likeditem
+(
+item_id int identity primary key ,
+customer_id varchar(10) foreign key references tbl_customer(customer_id) NOT NULL,
+product_id varchar(10) foreign key references tbl_products(product_id) NOT NULL,
+date date NOT NULL);
+
+INSERT INTO Tbl_likeditem VALUES('USER_24', 'PRODUCT_09','2022-09-06')
+INSERT INTO Tbl_likeditem VALUES('USER_14', 'PRODUCT_30','2021-09-06')
+INSERT INTO Tbl_likeditem VALUES('USER_19', 'PRODUCT_33','2023-01-10')
+INSERT INTO Tbl_likeditem VALUES('USER_02', 'PRODUCT_12','2022-04-19')
+INSERT INTO Tbl_likeditem VALUES('USER_10', 'PRODUCT_12','2022-10-21')
+INSERT INTO Tbl_likeditem VALUES('USER_18', 'PRODUCT_29','2022-06-30')
+INSERT INTO Tbl_likeditem VALUES('USER_06', 'PRODUCT_25','2022-03-22')
+INSERT INTO Tbl_likeditem VALUES('USER_04', 'PRODUCT_17','2022-04-25')
+INSERT INTO Tbl_likeditem VALUES('USER_02', 'PRODUCT_20','2021-11-03')
+INSERT INTO Tbl_likeditem VALUES( 'USER_19', 'PRODUCT_11','2022-09-20')
+INSERT INTO Tbl_likeditem VALUES( 'USER_11', 'PRODUCT_03','2020-05-030')
+INSERT INTO Tbl_likeditem VALUES('USER_24', 'PRODUCT_16','2022-04-16')
+INSERT INTO Tbl_likeditem VALUES( 'USER_03', 'PRODUCT_09','2021-12-14')
+INSERT INTO Tbl_likeditem VALUES('USER_12', 'PRODUCT_12','2022-05-11')
+INSERT INTO Tbl_likeditem VALUES('USER_10', 'PRODUCT_12','2021-12-29')
+INSERT INTO Tbl_likeditem VALUES('USER_18', 'PRODUCT_09', '2022-09-29')
+
+
+create table tbl_delivery_status (
+status_id int identity primary key ,
+customer_id varchar(10) foreign key references tbl_customer(customer_id) NOT NULL,
+product_id varchar(10) foreign key references tbl_products(product_id) NOT NULL,
+status varchar(50) NOT NULL)
+
+
+INSERT INTO tbl_delivery_status VALUES('USER_04', 'PRODUCT_09','Already Delivered')
+INSERT INTO tbl_delivery_status VALUES('USER_14', 'PRODUCT_20','Will deliver in 2 days')
+INSERT INTO tbl_delivery_status VALUES('USER_19', 'PRODUCT_33','Will deliver in 5 days')
+INSERT INTO tbl_delivery_status VALUES('USER_02', 'PRODUCT_12','Will deliver in 1 days')
+INSERT INTO tbl_delivery_status VALUES('USER_10', 'PRODUCT_12','Will deliver in 4 days')
+INSERT INTO tbl_delivery_status VALUES('USER_08', 'PRODUCT_09','Already Delivered0')
+INSERT INTO tbl_delivery_status VALUES('USER_16', 'PRODUCT_25','Will deliver in 2 days')
+INSERT INTO tbl_delivery_status VALUES('USER_04', 'PRODUCT_17','Already Delivered')
+INSERT INTO tbl_delivery_status VALUES('USER_02', 'PRODUCT_20','Will deliver in 3 days')
+INSERT INTO tbl_delivery_status VALUES('USER_19', 'PRODUCT_11','Will deliver in 1 days')
+INSERT INTO tbl_delivery_status VALUES('USER_01', 'PRODUCT_03','Will deliver in 2 days')
+INSERT INTO tbl_delivery_status VALUES('USER_04', 'PRODUCT_26','Will be delivering morning')
+INSERT INTO tbl_delivery_status VALUES( 'USER_13', 'PRODUCT_09','Already Delivered')
+INSERT INTO tbl_delivery_status VALUES('USER_02', 'PRODUCT_12','Will deliver in 2 days')
+INSERT INTO tbl_delivery_status VALUES('USER_10', 'PRODUCT_12','Will deliver in 4 days')
+INSERT INTO tbl_delivery_status VALUES('USER_18', 'PRODUCT_29', 'Already Delivered')
+INSERT INTO tbl_delivery_status VALUES('USER_07', 'PRODUCT_19', 'Already Delivered')
+select * from tbl_delivery_status
+
+alter table tbl_delivery_status
+add Delivery_charge int
+
+
+create table tbl_discounts
+(
+discount_id int identity primary key,
+product_id varchar(10) foreign key references tbl_products(product_id)NOT NULL ,
+discount_percent float NOT NULL,
+validation varchar(40) NOT NULL)
+
+
+
+insert into tbl_discounts values ('product_20', 33, 'discount expired');
+insert into tbl_discounts values ('product_24', 10.5, 'will be expired today');
+insert into tbl_discounts values ('product_28', 21.8, 'valid from 2023-06-01 to 2023-06-03');
+insert into tbl_discounts values ('product_10', 33, 'discount expired');
+insert into tbl_discounts values ('product_08', 50, 'valid from 2023-06-10 to 2023-06-15');
+insert into tbl_discounts values ('product_12', 20, 'valid from 2023-07-12 to 2023-07-20');
+insert into tbl_discounts values ('product_19', 35.5, 'valid from 2023-06-01 to 2023-06-03');
+insert into tbl_discounts values ('product_13', 25, 'will be expired today');
+
+select * from tbl_discounts
+
+CREATE  TABLE TBL_DELIVERY_STAFF(
+STAFF_ID INT IDENTITY PRIMARY KEY NOT  NULL,
+NAME VARCHAR(30) NOT NULL,
+EMAIL VARCHAR(50) CHECK (EMAIL LIKE '%@%.com' ) NOT NULL,
+PHONE_NUMBER char(10) check ( 6000000000 <= PHONE_NUMBER and PHONE_NUMBER <= 9999999999) NOT NULL,
+GENDER CHAR(1) CHECK (GENDER = 'M' OR GENDER ='F') NOT NULL,
+ADDRESS  VARCHAR(100) NOT NULL,
+EXPERIENCE INT NOT NULL)
+
+
+INSERT INTO TBL_DELIVERY_STAFF VALUES ('ANSHUMAN', 'anshu@gmail.com', 8574739291, 'M', 'KONCHADY MANGALORE', 5)
+INSERT INTO TBL_DELIVERY_STAFF VALUES ('UDAY', 'uday@gmail.com', 8674739230, 'M', 'KORAMANGALA BANGALORE', 2)
+INSERT INTO TBL_DELIVERY_STAFF VALUES ('KAILASH', 'kailash@gmail.com', 6794739277, 'M', 'PETER CELL STREET KOCHI', 1)
+INSERT INTO TBL_DELIVERY_STAFF VALUES ('TANISHA', 'tanisha@gmail.com', 9843208534, 'F', 'CAR STREET MANGALORE', 11)
+INSERT INTO TBL_DELIVERY_STAFF VALUES ('POOJA', 'pooja@gmail.com', 8749339450, 'F', 'KONCHADY MANGALORE',9)
+INSERT INTO TBL_DELIVERY_STAFF VALUES ('HARDHIK', 'hardhik@gmail.com', 6714739291, 'M', 'PETER CELL STREET KOCHI', 15)
+INSERT INTO TBL_DELIVERY_STAFF VALUES ('PRATHIK', 'prathik@gmail.com', 8744739291, 'M', 'KONCHADY MANGALORE', 10)
+INSERT INTO TBL_DELIVERY_STAFF VALUES ('ANKITH', 'nkith@gmail.com', 9604739291, 'M', 'KORAMANGALA BANGALOR', 2)
+INSERT INTO TBL_DELIVERY_STAFF VALUES ('KHUSHI', 'khushiu@gmail.com', 8921630273, 'F', 'KONCHADY MANGALORE', 4)
+INSERT INTO TBL_DELIVERY_STAFF VALUES ('RITHVIK', 'rithvik@gmail.com', 9322739200, 'M', 'PETER CELL STREET KOCHI', 8)
+INSERT INTO TBL_DELIVERY_STAFF VALUES ('RAHUL', 'rahul@gmail.com', 7074739009, 'M', 'CAR STREET MANGALORE', 5)
+INSERT INTO TBL_DELIVERY_STAFF VALUES ('CHETAN', 'chaten@gmail.com', 9174739235, 'M', 'KORAMANGALA BANGALORE',7)
+
+
+ALTER TABLE TBL_DELIVERY_STATUS 
+ADD DELIVERY_STAFF_ID INT 
+
+ALTER TABLE TBL_DELIVERY_STATUS 
+ADD 
+FOREIGN KEY(DELIVERY_STAFF_ID) REFERENCES TBL_DELIVERY_STAFF(STAFF_ID)
+
+
+
+
+--SP TO GET THE PRODUCT THAT ARE UNDER A PARTICULR CATEGORY 
+CREATE proc uspGetProductDetails
+@categoryid varchar(10)
+as begin
+select p.product_id, product_name from tbl_category c join tbl_products p
+on c.category_id= p.category_id where c.category_id=@categoryid
+end
+
+uspGetProductDetails 'ct02'
+
+
+--SP TO GET REVIEWS FOR PARTICULAR PRODUCTS
+ALTER PROC USPGetReviewsForProductId
+@PRODUCTID VARCHAR(10)
+AS BEGIN
+SELECT CUSTOMER_ID, REVIEWS FROM TBL_REVIEWS WHERE PRODUCT_ID=@PRODUCTID
+END
+
+USPGetReviewsForProductId  'PRODUCT_18';
+
+
+
+--SP FOR DELETING USER DETAILS FROM CHILD AND PARENT TABLES
+CREATE PROCEDURE uspDeleteCustomers
+@customerid varchar(10)
+AS
+BEGIN
+ DELETE FROM Tbl_Orders WHERE customer_id= @customerid;
+ DELETE FROM Tbl_Reviews where customer_id= @customerid; 
+ DELETE FROM tbl_likeditem where customer_id= @customerid;
+ DELETE FROM Tbl_Customer where customer_id= @customerid;
+END
+
+uspDeleteCustomers 'user_01'
+
+select * From Tbl_Payments
+
+
+--SP SAYING EXPIRY DATE MUST BE GREATER THAN ORDER DATE--
+alter procedure uspExpiryDateMustBeGreaterThanOrderDate
+@paymentid varchar(10),
+@orderid varchar(10),
+@Orderdate date,
+@Acc_num Varchar(20),
+@expirydate date,
+@AMOUNT INT,
+@STATUS VARCHAR(30)
+AS BEGIN
+if(@expirydate<@Orderdate)
+begin
+raiserror('your card is expired',16,1);
+end
+else
+begin try
+begin tran 
+insert into tbl_payments values (@paymentid,@orderid, @Orderdate, @Acc_num, @expirydate, @AMOUNT, @STATUS)
+commit tran 
+END TRY 
+BEGIN CATCH
+ROLLBACK TRAN 
+END CATCH
+END
+
+uspExpiryDateMustBeGreaterThanOrderDate 'PAYMENT_14', 'order_14', '2022-10-05', 'AA000072', '2021-10-06', 765, 'PAYMENT DONE'
+
+
+--SP FOR CHECKING THE DELIVERY STATUS
+CREATE procedure UspForCheckingDelivery
+@customer_id varchar(10)
+AS BEGIN
+
+if(@customer_id not in (select CUSTOMER_ID from tbl_orders) )
+begin
+raiserror('No Order has been made by this customer',16,1);
+end
+else
+if(@customer_id = any (select CUSTOMER_ID from tbl_orders)) 
+begin 
+select customer_id , product_id, status from   tbl_delivery_status where customer_id= @customer_id
+end
+end
+
+uspForCheckingDelivery 'user_03'
+
+select * from tbl_delivery_status
+select * from tbl_orders
+
+
+
+--SP TO GET THE AMOUNT AFTER APPLYING DISCOUNTS
+alter proc uspGetUnitAmonutOfProductAfterDiscount
+@productid varchar(10)
+as begin 
+select D.product_id, P.PRODUCT_UNIT_AMOUNT, P.PRODUCT_UNIT_AMOUNT-D.discount_price as Amount_After_Disccount
+from tbl_discounts D join Tbl_products P on D.product_id=P.PRODUCT_ID where @productid=P.PRODUCT_ID
+end
+
+uspGetUnitAmonutOfProductAfterDiscount 'product_08'
+
+
+--SP TO KNOW THE PRODUCTS THAT ARE HAVING LOW RATINGS
+CREATE PROC USPGetProductsWithLowRatings
+AS BEGIN
+SELECT P.PRODUCT_ID, P.PRODUCT_NAME, RATINGS FROM TBL_REVIEWS R JOIN Tbl_Products P ON P.PRODUCT_ID=R.PRODUCT_ID WHERE RATINGS <= 2
+END
+
+
+
+--SP TO GET TOTAL AMOUNT EARNED ON A PARTICULAR DAY
+CREATE proc uspGetTotalAmountEarnedOnParticularDate
+@DATE date
+as begin
+select SUM(TOTAL_AMOUNT) AS AMOUNT_EARNED from Tbl_Payments
+end
+
+uspGetTotalAmountEarnedOnParticularDate '2022-01-23'
+
+
+--SP TO KNOW THE ORDERS WHOSE PAYMENT IS NOT DONE
+ALTER PROC uspGetOrderDetailsWhosePaymentNotDone
+AS BEGIN
+SELECT O.*, P.payment_status FROM TBL_orders O JOIN Tbl_Payments P ON P.ORDER_ID=O.ORDER_ID WHERE payment_status like '%NOT DONE%'
+END
+
+
+/*
+--SP TO DECREASE THE AVAILABLE QUANTITY OF PRODUCTS WHEN PURCHASED AND INSERTING RECORD INTO THE ORDERS TABLE
+CREATE  PROCEDURE uspReduceQuantityOfProductAvailabilityAfterThePlacingOrder
+@customer_id varchar(10),
+@Product_id varchar(10),
+@order_id varchar(10),
+@RequiredQuantity INT
+AS BEGIN
+
+DECLARE @StockPresent  INT
+SELECT @StockPresent = QUANTITY_AVAILABLE FROM Tbl_Products WHERE PRODUCT_ID = @Product_ID
+
+DECLARE @Unit_amount  INT
+SELECT @Unit_amount =  PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id = @Product_ID
+
+IF (@StockPresent < @RequiredQuantity)
+BEGIN
+RAISERROR('Not Enough Stock Available',16, 1);
+END
+
+ELSE
+BEGIN
+BEGIN TRY
+BEGIN TRAN
+
+UPDATE  TBL_PRODUCTS
+SET QUANTITY_AVAILABLE =(QUANTITY_AVAILABLE - @RequiredQuantity)  where PRODUCT_ID =@Product_ID
+
+INSERT INTO Tbl_Orders VALUES (@order_id, @customer_id,   @Product_id, GETDATE(), @RequiredQuantity, @Unit_amount)
+
+COMMIT TRAN 
+END TRY 
+BEGIN CATCH
+ROLLBACK TRAN 
+END CATCH
+END
+END
+
+uspReduceQuantityOfProductAvailabilityAfterThePlacingOrder 'user_03', 'product_02', 'order_13', 2
+*/
+
+
+--RECURSIVE SP TO DECREASE THE AVAILABLE QUANTITY OF PRODUCTS WHEN PURCHASED AND INSERTING RECORD INTO THE ORDERS TABLE
+CREATE  PROCEDURE uspReduceQuantityOfProductAvailabilityAfterPlacingTheOrder
+@customer_id varchar(10),
+@Product_id varchar(10),
+@RequiredQuantity INT
+AS BEGIN
+
+DECLARE @StockPresent  INT
+SELECT @StockPresent = QUANTITY_AVAILABLE FROM Tbl_Products WHERE PRODUCT_ID = @Product_ID
+
+DECLARE @Unit_amount  INT
+SELECT @Unit_amount =  PRODUCT_UNIT_AMOUNT from Tbl_Products where product_id = @Product_ID
+
+IF (@StockPresent < @RequiredQuantity)
+BEGIN
+RAISERROR('Not Enough Stock Available',16, 1);
+END
+
+IF (@RequiredQuantity < = 5)
+BEGIN
+BEGIN TRY
+BEGIN TRAN
+
+UPDATE TBL_PRODUCTS
+SET QUANTITY_AVAILABLE = (QUANTITY_AVAILABLE - @RequiredQuantity)  where PRODUCT_ID = @Product_ID
+
+DECLARE @MAXORDERID INT 
+SELECT @MAXORDERID = SUBSTRING (ORDER_ID, 7, 2) FROM TBL_ORDERS 
+SELECT @MAXORDERID = CASE WHEN MAX(@MAXORDERID) IS NULL THEN 0 ELSE MAX(@MAXORDERID) END FROM TBL_ORDERS
+SET @MAXORDERID = @MAXORDERID + 1
+DECLARE @ORDERID VARCHAR(10)
+SELECT @ORDERID = CONCAT('ORDER_', @MAXORDERID)
+
+INSERT INTO Tbl_Orders VALUES (@ORDERID, @customer_id, @Product_id, GETDATE(), @RequiredQuantity, @Unit_amount)
+
+COMMIT TRAN 
+END TRY 
+BEGIN CATCH
+ROLLBACK TRAN 
+END CATCH
+END
+
+ELSE
+BEGIN
+EXEC uspReduceQuantityOfProductAvailabilityAfterPlacingTheOrder  @customer_id, @Product_id, 5
+
+DECLARE @REMAINING_PRODUCTS INT = @RequiredQuantity - 5 ;
+EXEC uspReduceQuantityOfProductAvailabilityAfterPlacingTheOrder  @customer_id, @Product_id, @REMAINING_PRODUCTS
+
+END
+END
+
+uspReduceQuantityOfProductAvailabilityAfterPlacingTheOrder 'user_03', 'product_04',  11
+
+select * from Tbl_Orders
+select * from tbl_products
+
+
+--USING TABLE TYPE FOR STORE PROCEDURE
+SELECT * FROM Tbl_Products
+
+CREATE TYPE UT_PRODUCTS AS TABLE
+(
+PRODUCT_ID VARCHAR(10) PRIMARY KEY,
+PRODUCT_NAME VARCHAR(30) ,
+PRODUCT_DESCRIPTION VARCHAR(100) ,
+PRODUCT_UNIT_AMOUNT INT,
+CATEGORY_ID VARCHAR(10),
+QUANTITY_AVAILABLE INT)
+
+
+CREATE PROC uspInsertProductDetails (@PRODUCT [UT_PRODUCTS] READONLY)
+AS BEGIN 
+INSERT INTO DBO.Tbl_Products(
+PRODUCT_ID, PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_UNIT_AMOUNT, CATEGORY_ID, QUANTITY_AVAILABLE)
+SELECT * FROM @PRODUCT
+END
+
+DECLARE @PRODUCT_DETAILS AS [UT_PRODUCTS];
+INSERT INTO @PRODUCT_DETAILS 
+SELECT 'PRODUCT_36', 'SAMSUNG SMART PHONE', 'SMART PHONE', 22000, 'CT08', 20 
+
+EXEC DBO.uspInsertProductDetails  @PRODUCT_DETAILS
+
+
+
+--triggers fr customer--
+
+create table tbl_CustomerAuditDetails(
+id int identity,
+auditdata text)
+
+alter trigger tr_tbl_customer_insert
+on tbl_customer
+for insert 
+as
+begin
+declare @id varchar(10)
+select @id= customer_id from inserted;
+declare @username varchar(20)
+select @username= CUSTOMER_NAME from inserted;
+insert into tbl_CustomerAuditDetails
+values ('There is new customer with ID= ' + @id + ' with username = ' + @username)
+end;
+ 
+INSERT INTO Tbl_Customer VALUES ('USER_21', 'ANISH PRABHU ' , 'anishprbu@gmail.com'  ,7847683976, 'M','DOMLUR','BANGALORE',687688 ,'KARNATAKA', 'INDIA')
+
+select * from tbl_customer;
+select * from tbl_CustomerAuditDetails
+
+delete from tbl_customer where customer_id='user_51'
+
+
+create trigger tr_tbl_customer_delete
+on tbl_customer
+for delete 
+as
+begin
+declare @id varchar(10)
+select @id= customer_id from deleted;
+declare @username varchar(20)
+select @username= CUSTOMER_NAME from deleted;
+insert into tbl_CustomerAuditDetails
+values ('The user with ID= ' + @id + ' and username = ' + @username + 'has deleted the account')
+end;
+
+delete from tbl_customer where CUSTOMER_ID='user_21'
+
+create trigger  tr_tbl_customer_update ON tbl_customer
+FOR UPDATE
+AS BEGIN
+
+DECLARE @customerid varchar(10)
+DECLARE @OldName VARCHAR(30), @NewName VARCHAR(30)
+Declare @OldEmail varchar(50), @newEmail varchar(50)
+declare @Oldphone char(10), @Newphone char(10)
+Declare @OldGender varchar(10), @NewGender varchar(10)
+declare @OldStreet varchar(max), @Newstreet varchar(max)
+DECLARE @Oldcity VARCHAR(30), @Newcity VARCHAR(30)
+Declare @OldPin numeric(6), @NewPin numeric (6)
+declare @OldState varchar(50), @NewState varchar(50)
+declare @OldCountry varchar(50), @newCountry varchar(50)
+DECLARE @AuditText VARCHAR(1000);
+
+SELECT * INTO #TempTable FROM inserted
+
+WHILE (EXISTS(SELECT customer_id from #TempTable))
+
+BEGIN
+
+SET @AuditText=' '
+
+SELECT TOP 1 @customerid = customer_id,
+@NewName = customer_name,
+@newEmail=email,
+@Newphone=phone_number,
+@NewGender=gender,
+@Newstreet=street,
+@Newcity= city,
+@NewPin=pin,
+@NewState=state,
+@newCountry=country
+FROM #TempTable
+
+SELECT @OldName= customer_name, 
+@OldEmail=email,
+@Oldphone=phone_number,
+@OldGender=gender,
+@OldStreet=street,
+@oldcity =  city, 
+@OldPin=pin,
+@OldState=state,
+@OldCountry=country
+FROM deleted WHERE @customerid = customer_id
+
+SET @AuditText = 'A customer with id =' + CAST (@customerid AS VARCHAR)+ 'changed'
+if (@OldName <> @NewName)
+SET @AuditText=@AuditText + ' name from ' +@OldName + ' to ' + @NewName
+if (@OldEmail <> @newEmail)
+SET @AuditText=@AuditText + ' email from ' +@OldEmail + ' to ' + @newEmail
+if ( @Oldphone <> @Newphone)
+SET @AuditText=@AuditText + ' phonenumber from ' +cast(@Oldphone as varchar) +' to ' +cast( @Newphone as varchar)
+if ( @OldGender <> @NewGender)
+SET @AuditText=@AuditText + ' gender from ' + @OldGender + ' to ' + @NewGender
+if ( @OldStreet <> @Newstreet)
+SET @AuditText=@AuditText + ' street from ' + @OldStreet+ ' to ' + @Newstreet
+if (@oldcity!= @Newcity)
+SET @AuditText = @AuditText + ' city from ' +@Oldcity + ' to ' + @Newcity
+if (@OldPin!= @NewPin)
+SET @AuditText = @AuditText + ' pin from ' + cast (@OldPin as varchar) + ' to ' + cast (@NewPin as varchar)
+if ( @NewState <> @OldState)
+SET @AuditText=@AuditText + ' state from ' + @OldState + ' to ' + @NewState
+if (@OldCountry!= @newCountry)
+SET @AuditText = @AuditText + ' country from ' +@OldCountry + ' to ' + @newCountry
+
+insert into  tbl_CustomerAuditDetails values (@AuditText)
+
+delete from #TempTable where @customerid = customer_id
+end
+end
+
+update tbl_customer
+set state='KERALA' where customer_id= 'user_06'
+
+
+
+
+--triggers  for products table--
+
+create table  tbl_ProductAuditDetails(
+id int identity,
+category_id varchar(10) foreign key references tbl_category(category_id),
+auditdata text)
+
+alter trigger tr_tbl_products_insert
+on tbl_products
+for insert 
+as
+begin
+declare @id varchar(10)
+select @id= product_id from inserted;
+declare @productname varchar(20)
+select @productname= product_name from inserted;
+declare @categoryid varchar(10)
+select @categoryid= category_id from inserted;
+insert into tbl_ProductAuditDetails
+values (@categoryid, 'There is new product with ID= ' + @id + ' with product name as = ' + @productname)
+end;
+
+SELECT * FROM TBL_CATEGORY
+SELECT * FROM TBL_ProductAuditDetails
+insert into tbl_products values ('PRODUCT_35', 'KURTAS', 'WOMEN KURTAS', 1200, 'CT01')
+
+
+create trigger tr_tbl_products_delete1
+on tbl_products
+for delete 
+as
+begin
+declare @id varchar(10)
+select @id= product_id from deleted;
+declare @productname varchar(20)
+select @productname= product_name from deleted;
+declare @categoryid varchar(10)
+select @categoryid= category_id from deleted;
+insert into TBL_ProductAuditDetails
+values (@categoryid, 'A product with ID= ' + @id + ' is been deleted ')
+end;
+
+delete from tbl_products where product_id ='product_35'
+
+
+
+--DDL TRIGGERS--
+
+CREATE TABLE tbl_AUDITCHANGES(
+DATABASENAME VARCHAR(20),
+TABLENAME VARCHAR(20),
+EVENTYPE VARCHAR(15),
+LOGINNAME VARCHAR(20),
+SQLCOMMAND VARCHAR(2000),
+AUDITDATETIME DATETIME);
+
+CREATE TRIGGER TR_ForAuditTableChanges
+ON database
+FOR CREATE_TABLE, ALTER_TABLE, DROP_TABLE, RENAME
+AS
+BEGIN
+declare @Eventdata xml
+SELECT @Eventdata=EVENTDATA();
+insert into EcommerceDB.dbo.tbl_AUDITCHANGES 
+(DATABASENAME, TABLENAME, EVENTYPE, LOGINNAME, SQLCOMMAND, AUDITDATETIME) values(
+
+@Eventdata.value('(/EVENT_INSTANCE/DatabaseName)[1]', 'varchar(20)'),
+@Eventdata.value('(/EVENT_INSTANCE/ObjectName)[1]', 'varchar(20)'),
+@Eventdata.value('(/EVENT_INSTANCE/EventType)[1]', 'varchar(15)'),
+@Eventdata.value('(/EVENT_INSTANCE/LoginName)[1]', 'varchar(20)'),
+@Eventdata.value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]', 'varchar(2000)'), getdate())
+
+END
+
+select * from tbl_AUDITCHANGES
+
+alter table tbl_customer alter column customer_name varchar(30)
+
+
+--CTE--
+
+--CTE FOR DELETING DUPLICATE RECORDS FROM TBL_LIKEDITEM (A CUSTOMER CANNOT LIKE THE SAME PRODUCT TWICE)
+
+with cte_DeleteduplicateRecordsFromTbl_LikedItem as 
+(select L.* , ROW_NUMBER() over (partition by Customer_id, Product_id order by Customer_id, Product_id )
+as rownum  from tbl_likeditem L) 
+delete from cte_DeleteduplicateRecordsFromTbl_LikedItem where rownum > 1;
+
+select * from tbl_likeditem
+
+INSERT INTO Tbl_likeditem VALUES('USER_19', 'PRODUCT_33','2022-09-06')
+INSERT INTO Tbl_likeditem VALUES('USER_14', 'PRODUCT_30','2021-09-06')
+
+
+
+--CTE FOR UPDATING CUSTOMER'S PASSWORD
+SELECT * FROM TBL_LOGIN
+
+WITH cte_ChangeCustomerLoginPassword as
+(select * from tbl_login where USER_NAME = 'SHRAVANI')
+update cte_ChangeCustomerLoginPassword
+set password = HASHBYTES('MD5','PSSWRD02') 
+
+
+--CTE FOR CHECKING ORDER AND PAYMENT DETAILS
+
+WITH cte_CheckOrderAndPaymentDetails as
+(select O.*, PAYMENT_ID, DATE_OF_PAYMENT, TOTAL_AMOUNT, PAYMENT_STATUS, ACCOUNT_NUMBER, EXPIRY_DATE 
+from tbl_orders O join Tbl_Payments p on o.order_id= p.order_id)
+select ORDER_ID, CUSTOMER_ID, PRODUCT_ID, DATE_OF_PAYMENT, TOTAL_AMOUNT, PAYMENT_STATUS
+from cte_CheckOrderAndPaymentDetails
+
+select * from tbl_orders
+select * from tbl_payments
+
+
+--RECURSIVE CTE TO GET THE LEVELS BASED ON STAFF EXPERIENCE
+SELECT * FROM TBL_DELIVERY_STAFF
+
+WITH cte_GetLevelOfDeliveryStaffBasedOnExperience( STAFF_ID, NAME, EXPERIENCE, [LEVEL]) AS (
+SELECT STAFF_ID, NAME, EXPERIENCE, 1 AS [LEVEL]
+FROM TBL_DELIVERY_STAFF
+WHERE EXPERIENCE IN (SELECT MAX(EXPERIENCE) FROM TBL_DELIVERY_STAFF)
+UNION ALL
+SELECT DS.STAFF_ID, DS.NAME, DS.EXPERIENCE, CTE.[LEVEL] + 1
+FROM TBL_DELIVERY_STAFF DS JOIN cte_GetLevelOfDeliveryStaffBasedOnExperience cte
+ON DS.EXPERIENCE = CTE.EXPERIENCE - 1
+)
+select STAFF_ID, NAME, EXPERIENCE, [LEVEL] 
+FROM cte_GetLevelOfDeliveryStaffBasedOnExperience
+ORDER BY STAFF_ID
+
+
+
+--VIEWS
+
+--VIEW TO KNOW THE SUBCATEGORIES AND PRODUCTS PRESENT UNDER A CATEGORY
+ALTER VIEW vw_GetSubcategoryAndProductsPresentUnderCategory as
+select C.CATEGORY_ID, CATEGORY_NAME, SUBCATEGORY_NAME, PRODUCT_NAME
+from tbl_category C join tbl_subcategory SC on C.category_id= SC.Category_ID
+join Tbl_Products P on SC.CATEGORY_ID = P.CATEGORY_ID
+
+select * from vw_GetSubcategoryAndProductsPresentUnderCategory;
+
+
+--VIEW TO GET THE PRODUCTS THAT HAVE HIGH RATINGS
+ALTER view vw_GetProductsHavingHighRatings as
+select P.PRODUCT_ID, PRODUCT_NAME, RATINGS, REVIEWS 
+from Tbl_Reviews R join Tbl_Products P on P.product_id = R.PRODUCT_ID 
+where ratings >3; 
+
+select * from vw_GetProductsHavingHighRatings;
+
+--VIEW TO GET THE PAYMENT DETAILS WHERE TOTAL AMOUNT IS MORE THAN 1000
+ALTER view vw_GetPaymentDetailsWhereCostIsGreaterThan1000 as
+select ORDER_ID, TOTAL_AMOUNT 
+from tbl_payments 
+where total_amount > 1000;
+
+select * from vw_GetPaymentDetailsWhereCostIsGreaterThan1000;
+
+--VIEW TO GET COUNT OF CUSTOMERS BELONGING TO SAME STREET AND PIN
+CREATE VIEW vw_GetCountOfCustomersBelongingToTheSameStreetAndPin as
+SELECT street, pin, city, count(distinct(customer_id)) as total_customers
+FROM Tbl_Customer
+group by street, pin, city
+
+select * from vw_GetCountOfCustomersBelongingToTheSameStreetAndPin;
+
+
+--FUNCTIONS
+
+--FUNCTION TO GET THE TOTAL COUNT OF CUSTOMERS PURCHASING A PARTICULAR PRODUCT
+alter function fn_GetCountOfCustomersPurchasingProduct(@productid varchar(10))
+returns integer
+as begin
+declare @count int
+select @count = count(customer_id) from Tbl_Orders where PRODUCT_ID = @productid
+return (@count)
+end
+
+select dbo.fn_GetCountOfCustomersPurchasingProduct('product_09')
+
+
+--FUNCTION TO GET THE ITEMS LIKED BY THE CUSTOMER
+ALTER function fn_GetTheProductsLikedByTheCustomer(@customerid varchar(10))
+returns table 
+as
+return (select  P.PRODUCT_ID, PRODUCT_NAME 
+from tbl_likeditem L join Tbl_Products P on L.product_id= P.PRODUCT_ID where customer_id = @customerid)
+
+select * from fn_GetTheProductsLikedByTheCustomer('user_02')
+
+
+--FUNCTION TO GET THE AVAILABLE QUANTITY OF THE PRODUCT 
+ALTER FUNCTION fn_CheckQuantityOfProductsAvailable ( @product_id varchar(10))
+returns int
+as
+begin
+return (select Quantity_available from tbl_products where PRODUCT_ID = @product_id)
+end
+
+select dbo.fn_CheckQuantityOfProductsAvailable ('product_03')
+
+
+--FUNCTION TO GET THE AMOUNT AFTER THE APPLICATION OF DELIVERY CHARGE
+ALTER FUNCTION fn_GetAmountAfterIncludingTheDeliveryCharge(@ORDERID VARCHAR(10))
+returns table
+as 
+return (select O.ORDER_ID, O.PRODUCT_ID, O.CUSTOMER_ID, TOTAL_AMOUNT AS PURCHASE_AMOUNT, TOTAL_AMOUNT + DELIVERY_CHARGE AS FINAL_AMOUNT 
+FROM tbl_delivery_status D JOIN Tbl_ORDERS O ON O.PRODUCT_ID = D.product_id
+JOIN Tbl_Payments P ON O.ORDER_ID = P.ORDER_ID WHERE O.ORDER_ID = @ORDERID)
+
+SELECT * FROM fn_GetAmountAfterIncludingTheDeliveryCharge('ORDER_04')
+
+SELECT * FROM Tbl_Payments
+SELECT * FROM tbl_delivery_status
+SELECT * FROM Tbl_Orders
+
+
+--FUNCTION TO CHECK IF THE USER ENTERS THE CORRECT PASSWORD
+SELECT * FROM TBL_LOGIN
+
+ALTER FUNCTION fn_CheckPasswordWithUserName
+( @username varchar(30),
+@password varCHAR(30))
+RETURNS varchar(50)
+AS BEGIN
+DECLARE @result varchar(50)
+SELECT @result = (CASE PASSWORD WHEN  HASHBYTES('MD5', @password ) THEN 'LOGIN SUCCESSFUL'  
+ELSE 'PASSWORD YOU HAVE ENTERED IS INCORRECT'
+END ) 
+FROM TBL_LOGIN WHERE USER_NAME = @username 
+
+RETURN ISNULL(@result, 'USERNAME NOT FOUND'); 
+END
+
+SELECT DBO.fn_CheckPasswordWithUserName ('SHRAVANI', 'PSSWRD02' )
+
+--FUNCTION TO GET THE DISCOUNTS AVAILABLE FOR PARTICULAR DATE
+SELECT * FROM tbl_discounts
+
+ALTER FUNCTION fn_GetDiscountsForTheDatesGiven
+(@date date)
+returns table 
+as
+return (select * from tbl_discounts where @date between discount_start_date and discount_end_date)
+
+
+select * from fn_GetDiscountsForTheDatesGiven('2023-06-02')
